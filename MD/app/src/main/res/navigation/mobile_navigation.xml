@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.feriusjosewil.resepai.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.feriusjosewil.resepai.ui.cart.CartFragment"
+        android:label="@string/title_cart"
+        tools:layout="@layout/cart_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.feriusjosewil.resepai.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/history_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.feriusjosewil.resepai.ui.favorite.FavoriteFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/favorite_fragment"/>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.feriusjosewil.resepai.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/profile_fragment"/>
+</navigation>
