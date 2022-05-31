@@ -6,8 +6,8 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
+        android:id="@+id/tv_profile_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_profile" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

@@ -55,6 +55,12 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun auth(): Intent {
-        return Intent(this, LoginActivity::class.java)
+        val isLoggedIn = true
+        intent = if (isLoggedIn) {
+            Intent(this, MainActivity::class.java)
+        } else {
+            Intent(this, LoginActivity::class.java)
+        }
+        return intent
     }
 }

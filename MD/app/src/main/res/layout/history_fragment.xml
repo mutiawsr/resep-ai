@@ -6,8 +6,8 @@
     tools:context=".ui.history.HistoryFragment">
 
     <TextView
+        android:id="@+id/tv_history_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_history" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

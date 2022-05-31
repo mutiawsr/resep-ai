@@ -6,27 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.feriusjosewil.resepai.R
 
 class CartFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CartFragment()
-    }
-
-    private lateinit var viewModel: CartViewModel
+    private lateinit var cartViewModel: CartViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.cart_fragment, container, false)
+        cartViewModel =
+            ViewModelProvider(this)[CartViewModel::class.java]
+        val root = inflater.inflate(R.layout.cart_fragment, container, false)
+        val textView: TextView = root.findViewById(R.id.tv_cart_title)
+        cartViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+        return root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

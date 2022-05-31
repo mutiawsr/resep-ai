@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginLeft="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                tools:ignore="ImageContrastCheck"
+                tools:src="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/tv_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:textColor="@color/main_text_color"
+                android:textSize="18sp"
+                android:fontFamily="@font/inter_bold"
+                android:layout_marginHorizontal="8dp"
+                tools:text="@string/app_name" />
+            <TextView
+                android:id="@+id/tv_item_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:textColor="@color/main_text_color"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_bold"
+                android:layout_marginHorizontal="8dp"
+                tools:text="@string/app_name" />
+            <TextView
+                android:id="@+id/tv_item_likes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/main_text_color"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter_bold"
+                android:layout_margin="8dp"
+                tools:text="@string/app_name"
+                app:drawableStartCompat="@drawable/ic_baseline_favorite_24"
+                android:drawablePadding="4dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

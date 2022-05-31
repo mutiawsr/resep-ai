@@ -6,8 +6,8 @@
     tools:context=".ui.cart.CartFragment">
 
     <TextView
+        android:id="@+id/tv_cart_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_cart" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
