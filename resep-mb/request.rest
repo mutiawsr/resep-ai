@@ -1,0 +1,26 @@
+
+POST http://127.0.0.1:3000/login
+
+{
+    "name" : "adi",
+    "password" : "1234"
+}
+
+###
+
+POST http://127.0.0.1:3000/regis
+
+{
+    "name" : "etus",
+    "password" : "etus1234",
+    "notlp" : "924i91",
+    "alamat" : "jalan kaki"
+}
+
+###
+
+GET http://127.0.0.1:3000/account
+
+###
+
+GET http://127.0.0.1:3000/account/1
