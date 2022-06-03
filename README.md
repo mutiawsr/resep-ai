@@ -1,6 +1,9 @@
 # resep-ai
 > Project repositori for bangkit capstone
 
+# Google Colab
+> https://colab.research.google.com/drive/1arBYx8w7dERyR9xKsIF2hTquRt-vZoym?usp=sharing
+
 ## Team ID
 > C22-PX440
 
