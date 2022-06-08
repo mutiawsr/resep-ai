@@ -12,5 +12,6 @@ data class Recipe(
     var image: Int = 0,
     var ingredient: String = "",
     var step: String = "",
-    var likes: Int = 0
+    var likes: Int = 0,
+    var price: Int = 0
 ) : Parcelable

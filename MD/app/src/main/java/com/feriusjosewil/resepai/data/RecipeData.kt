@@ -41,11 +41,11 @@ object RecipeData {
 
     private val recipeImage = intArrayOf(
         R.drawable.fried_wontons,
+        R.drawable.fruit_salad,
         R.drawable.garlic_herb_cheese_bombs,
         R.drawable.mini_quiches,
         R.drawable.nyonya_kuih_pie_tee,
         R.drawable.parmesan_sweet_potato_fries,
-        R.drawable.parmesan_zucchini_chips,
         R.drawable.parmesan_zucchini_chips,
         R.drawable.spring_rolls,
     )
@@ -59,6 +59,17 @@ object RecipeData {
         65,
         76,
         87
+    )
+
+    private val recipePrice = arrayOf(
+        99020,
+        44300,
+        38000,
+        41000,
+        43500,
+        42100,
+        54000,
+        24000
     )
 
     private val recipeIngredient = arrayOf(
@@ -95,6 +106,7 @@ object RecipeData {
                 recipe.ingredient = recipeIngredient[position]
                 recipe.step = recipeStep[position]
                 recipe.image = recipeImage[position]
+                recipe.price = recipePrice[position]
                 list.add(recipe)
             }
             return list
