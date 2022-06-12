@@ -25,17 +25,17 @@ App features :
 
 
 # Google Colab
-> C22-PX440 resep-ai.ipynb https://colab.research.google.com/drive/1RAViqpMJfXlcQ60p3fhU_zdfe6t7fAwk?usp=sharing
+> [Resep-AI Notebook](https://colab.research.google.com/drive/1Mn1JQFQzK8FbD2s-Ip9gYt0jx_CFOTOV?usp=sharing)
 
 # Dataset
-> https://drive.google.com/file/d/1ZbtXjCPWOjGPTy62_aWP7_RfVn0kqs9r/view
+> [Resep-AI Dataset](https://drive.google.com/file/d/1PPhcIdtS0W69bR6XRrLrKebUrZlWnFT8/view?usp=sharing)
 
 ## Team ID
 > C22-PX440
 
 ## Documentation
 ### Android
-1.  Clone this github repository: [Link](https://github.com/mutiawsr/resep-ai/tree/main/MD)
+1.  Clone this github repository: [Resep-AI Mobile Developer](https://github.com/mutiawsr/resep-ai/tree/main/MD)
 2.  Open the project using Android Studio 
 3.  Make sure you have a device that is connected to android studio or you can also use an android emulator on your PC.
 4.  Click the Run 'app' button or press Shift + F10 on your keyboard.
@@ -45,7 +45,7 @@ App features :
 
 
 ### Machine Learning
-1.  Clone this github repository : [Link]([https://github.com/mutiawsr/resep-ai/blob/main/ML/C22_PX440_resep_ai.ipynb](https://colab.research.google.com/drive/1Mn1JQFQzK8FbD2s-Ip9gYt0jx_CFOTOV?usp=sharing))
+1.  Clone this github repository : [Resep-AI Machine Learning](https://github.com/mutiawsr/resep-ai/tree/main/ML)  
 2.  Open with google colaboratory or Jupyter Notebook.
 3.  Install and import all packages.
 
