@@ -313,7 +313,8 @@ plt.show()
 1. In Cloud Shell clone this repository: [Resep-AI Cloud Computing](https://github.com/mutiawsr/resep-ai/tree/main/resepaibackend)
 2. cd resepaibackend
 3. npm install
-4. ./deploy.sh
+4. change .env.sample to .env
+5. ./deploy.sh
 
 ### Machine Learning
 1.  Clone this github repository : [Resep-AI Machine Learning](https://github.com/mutiawsr/resep-ai/tree/main/ML)  
