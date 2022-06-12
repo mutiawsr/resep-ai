@@ -1,0 +1,63 @@
+
+POST  https://resepai-backend-vlbqdtksba-uc.a.run.app/v/login
+
+{
+    "email" : "admin@gmail.com",
+    "password" : "admin1234"
+}
+
+###
+
+POST https://resepai-backend-vlbqdtksba-uc.a.run.app/v/regis
+
+{
+    "email" : "admin12@gmail.com",
+    "username" : "newadminr35",
+    "password" : "9r3r3"
+}
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/account
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/account/1
+
+###
+
+PUT https://resepai-backend-vlbqdtksba-uc.a.run.app/v/account/1
+
+{
+    "username" : "jason",
+    "password" : "5454",
+    "no_hp" : "924i3241",
+    "alamat" : "jalani saja dulu"
+}
+
+###
+
+DELETE https://resepai-backend-vlbqdtksba-uc.a.run.app/v/account/1
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/resepkategori/ayam
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/resep/nasi
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/detailresep/2
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/reseplike
+
+###
+
+GET https://resepai-backend-vlbqdtksba-uc.a.run.app/v/detailbahan/1
+
+
+
