@@ -310,7 +310,10 @@ plt.show()
 5.  Wait until the build and install process is complete. You can use the application.
 
 ### Cloud Computing
-
+1. In Cloud Shell clone this repository: [Resep-AI Cloud Computing](https://github.com/mutiawsr/resep-ai/tree/main/resepaibackend)
+2. cd resepaibackend
+3. npm install
+4. ./deploy.sh
 
 ### Machine Learning
 1.  Clone this github repository : [Resep-AI Machine Learning](https://github.com/mutiawsr/resep-ai/tree/main/ML)  
