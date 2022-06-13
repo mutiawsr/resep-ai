@@ -19,7 +19,6 @@ App features :
 3. Profile info.
 4. History info.
 5. Cart menu.
-6. 
 
 ## Overview
 
@@ -296,7 +295,7 @@ plt.show()
 ```
 
 ## Dataset
-> [Resep-AI Dataset](https://drive.google.com/file/d/1-OMo-_rkGdV9EfA-hyauzQDXVUQp6RGk/view)
+> [Resep-AI Dataset](https://drive.google.com/file/d/1PPhcIdtS0W69bR6XRrLrKebUrZlWnFT8/view?usp=sharing)
 
 ## Team ID
 > C22-PX440
