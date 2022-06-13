@@ -1,6 +1,8 @@
 package com.feriusjosewil.resepai.api
 
+import com.feriusjosewil.resepai.model.User
+
 data class LoginResponse (
     val status: Int,
-    val message: String
+    val response: ArrayList<User>
 )

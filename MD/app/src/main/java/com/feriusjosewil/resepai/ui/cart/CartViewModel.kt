@@ -8,7 +8,7 @@ import com.feriusjosewil.resepai.R
 
 class CartViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Cart"
+        value = "Waiting API"
     }
     val text: LiveData<String> = _text
 }

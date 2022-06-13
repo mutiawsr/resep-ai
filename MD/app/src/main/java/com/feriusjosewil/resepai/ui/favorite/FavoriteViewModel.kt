@@ -8,7 +8,7 @@ import com.feriusjosewil.resepai.R
 
 class FavoriteViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "Favorite"
+        value = "Waiting API"
     }
     val text: LiveData<String> = _text
 }

@@ -8,7 +8,7 @@ import com.feriusjosewil.resepai.R
 
 class HistoryViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "History"
+        value = "Waiting API"
     }
     val text: LiveData<String> = _text
 }

@@ -79,14 +79,5 @@
                         tools:text="@string/app_name" />
                 </LinearLayout>
             </LinearLayout>
-        <ImageButton
-            android:id="@+id/btn_item_favorite"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end"
-            android:layout_margin="8dp"
-            android:background="@color/main_background"
-            android:contentDescription="@string/title_favorite"
-            android:src="@drawable/ic_baseline_favorite_24"/>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

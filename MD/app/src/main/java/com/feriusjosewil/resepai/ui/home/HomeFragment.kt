@@ -1,15 +1,21 @@
 package com.feriusjosewil.resepai.ui.home
 
+import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.ImageView
-import android.widget.SearchView
+import android.widget.LinearLayout
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +27,11 @@ import com.feriusjosewil.resepai.data.RecipeData
 import com.feriusjosewil.resepai.model.Category
 import com.feriusjosewil.resepai.model.Recipe
 
+
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var etSearchRecipe: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +44,24 @@ class HomeFragment : Fragment() {
 
         val rvMostLiked = root.findViewById<RecyclerView>(R.id.rv_most_liked)
         val btnImage = root.findViewById<ImageView>(R.id.btn_camera)
+        etSearchRecipe = root.findViewById(R.id.et_search_recipe)
+
+        etSearchRecipe.setOnEditorActionListener { _, actionId, _ ->
+            var handled = false
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val keyword = etSearchRecipe.text.toString()
+                etSearchRecipe.clearFocus()
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+
+                val intent = Intent(activity, ListRecipeActivity::class.java)
+                intent.putExtra(ListRecipeActivity.EXTRA_KEYWORD, keyword)
+                startActivity(intent)
+
+                handled = true
+            }
+            handled
+        }
 
         btnImage.setOnClickListener {
             val intent = Intent(activity, CameraActivity::class.java)
@@ -44,11 +70,11 @@ class HomeFragment : Fragment() {
         rvMostLiked.setHasFixedSize(true)
 
         rvMostLiked.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL ,false)
-        val listRecipeAdapter = MostLikedAdapter()
-        listRecipeAdapter.notifyDataSetChanged()
-        rvMostLiked.adapter = listRecipeAdapter
-        listRecipeAdapter.setItemList(RecipeData.listData)
-        listRecipeAdapter.setOnItemClickCallback(object : MostLikedAdapter.OnItemClickCallback {
+        val mostLikedAdapter = MostLikedAdapter()
+        mostLikedAdapter.notifyDataSetChanged()
+        rvMostLiked.adapter = mostLikedAdapter
+        mostLikedAdapter.setItemList(RecipeData.listData)
+        mostLikedAdapter.setOnItemClickCallback(object : MostLikedAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Recipe) {
                 showSelectedRecipe(data)
             }
@@ -67,14 +93,19 @@ class HomeFragment : Fragment() {
                 showSelectedCategory(data)
             }
         })
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        homeViewModel.listCategory.observe(viewLifecycleOwner) {
 
         }
         return root
     }
 
+    override fun onResume() {
+        etSearchRecipe.text.clear()
+        etSearchRecipe.clearFocus()
+        super.onResume()
+    }
     private fun showSelectedRecipe(recipe: Recipe) {
-        Toast.makeText(getActivity(), recipe.title, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, recipe.title, Toast.LENGTH_SHORT).show()
     }
 
     private fun showSelectedCategory(category: Category) {

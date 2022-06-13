@@ -1,9 +1,8 @@
 package com.feriusjosewil.resepai.api
 
+import com.feriusjosewil.resepai.model.Category
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface Api {
     @FormUrlEncoded
@@ -18,7 +17,16 @@ interface Api {
     @FormUrlEncoded
     @POST("login")
     fun login(
-        @Field("name") email: String,
-        @Field("password") pass: String
+        @Field("email") email: String,
+        @Field("password") password: String
     ): Call<LoginResponse>
+
+    @GET("search/recipe")
+    fun getListRecipe(
+        @Query("keyword") keyword: String
+    ): Call<ListRecipeResponse>
+
+    @GET("allkategori")
+    fun getListCategory(
+    ): Call<ListCategoryResponse>
 }

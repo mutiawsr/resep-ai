@@ -1,7 +1,6 @@
 package com.feriusjosewil.resepai.ui.home
 
 import android.app.Activity
-import android.app.Instrumentation
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,10 +8,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,17 +19,17 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.feriusjosewil.resepai.databinding.ActivityCameraBinding
-import com.feriusjosewil.resepai.ml.AiyFood
-import com.feriusjosewil.resepai.ml.ConvertedModel
-import com.feriusjosewil.resepai.ml.ConvertedModelFood
-import com.feriusjosewil.resepai.ml.ConvertedModelMobilenet
+import com.feriusjosewil.resepai.ml.ConvertedModelVgg
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.common.ops.NormalizeOp
+import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
-import java.nio.ByteBuffer
 
 
 class CameraActivity : AppCompatActivity() {
@@ -38,13 +37,8 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
     private lateinit var imageView: ImageView
     private lateinit var button: Button
-    private lateinit var tvOutput1: TextView
-    private lateinit var tvOutput2: TextView
-    private lateinit var tvOutput3: TextView
-    private lateinit var tvOutput4: TextView
-    private lateinit var tvOutput5: TextView
-    private lateinit var tvOutput6: TextView
-    private lateinit var tvOutput7: TextView
+    private lateinit var tvResult: TextView
+    private lateinit var btnFindRecipe: Button
     private val GALLERY_REQUEST_CODE = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,14 +49,9 @@ class CameraActivity : AppCompatActivity() {
 
         imageView = binding.imageView
         button = binding.btnCaptureImage
-        tvOutput1 = binding.tvOutput1
-        tvOutput2 = binding.tvOutput2
-        tvOutput3 = binding.tvOutput3
-        tvOutput4 = binding.tvOutput4
-        tvOutput5 = binding.tvOutput5
-        tvOutput6 = binding.tvOutput6
-        tvOutput7 = binding.tvOutput7
         val buttonLoad = binding.btnLoadImage
+        tvResult = binding.tvResult
+        btnFindRecipe = binding.btnFindRecipe
 
         button.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
@@ -87,19 +76,6 @@ class CameraActivity : AppCompatActivity() {
                 requestPermission.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
             }
         }
-
-        //to redirct user to google search for the scientific name
-        tvOutput1.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=${tvOutput1.text}"))
-            startActivity(intent)
-        }
-
-        // to download image when longPress on ImageView
-        imageView.setOnLongClickListener {
-            requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            return@setOnLongClickListener true
-        }
-
     }
 
     //request camera permission
@@ -143,52 +119,51 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun outputGenerator(bitmap: Bitmap){
-        val model = AiyFood.newInstance(this)
-        val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        val tfimage = TensorImage.fromBitmap(newBitmap)
+        val labels = arrayOf("Chocolate Cake", "Pasta", "Pizza", "Salad")
+        val tensorImage = TensorImage.fromBitmap(bitmap)
+        val imageProcessor: ImageProcessor = ImageProcessor.Builder()
+            .add(ResizeOp(128, 128, ResizeOp.ResizeMethod.NEAREST_NEIGHBOR))
+            .add(NormalizeOp(0f,255f))
+            .build()
+        imageProcessor.process(tensorImage)
 
-        val outputs = model.process(tfimage)
-            .probabilityAsCategoryList.apply {
-                sortByDescending { it.score }
-            }
+        var theBuffer = TensorImage.createFrom(tensorImage, DataType.FLOAT32)
+        var byteBuffer = theBuffer.buffer
 
-        //getting result having high probability
-        val highProbabilityOutput = outputs[0]
+        val model = ConvertedModelVgg.newInstance(this)
+        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 128, 128, 3), DataType.FLOAT32)
+        inputFeature0.loadBuffer(byteBuffer)
 
-        //setting ouput text
-        tvOutput1.text = highProbabilityOutput.label
-        Log.i("TAG", "outputGenerator: $highProbabilityOutput")
+        val outputs = model.process(inputFeature0)
+        val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
+        var max = getMax(outputFeature0)
+        val result = labels[max]
+        tvResult.text = result
 
-        // Releases model resources if no longer used.
         model.close()
 
-//
-//        //My Model
-//        var byteBuffer : ByteBuffer = ByteBuffer.allocateDirect(1280*128*3*4)
-//        val model = ConvertedModelMobilenet.newInstance(this)
-//
-//// Creates inputs for reference.
-//        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 128, 128, 3), DataType.FLOAT32)
-//        inputFeature0.loadBuffer(byteBuffer)
-//
-//// Runs model inference and gets result.
-//        val outputs = model.process(inputFeature0)
-//        val outputFeature0 = outputs.outputFeature0AsTensorBuffer.floatArray
-//
-//        tvOutput1.text = outputFeature0[0].toString()
-//        tvOutput2.text = outputFeature0[1].toString()
-//        tvOutput3.text = outputFeature0[2].toString()
-//        tvOutput4.text = outputFeature0[3].toString()
-//        tvOutput5.text = outputFeature0[4].toString()
-//        tvOutput6.text = outputFeature0[5].toString()
-//        tvOutput7.text = outputFeature0[6].toString()
-//
-//// Releases model resources if no longer used.
-//        model.close()
-
+        if (tvResult.text != "") {
+            btnFindRecipe.visibility = View.VISIBLE
+            btnFindRecipe.setOnClickListener{
+                Toast.makeText(this, "Waiting API", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
+    private fun getMax(arr:FloatArray) : Int{
+        var index = 0
+        var min = 0.0f
+
+        for(i in arr.indices) {
+            if(arr[i] > min){
+                index = i
+                min = arr[index]
+            }
+        }
+        return index
+
+    }
 
     // to download image to device
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){

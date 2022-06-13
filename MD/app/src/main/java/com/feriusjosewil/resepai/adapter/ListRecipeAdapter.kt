@@ -6,14 +6,24 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.feriusjosewil.resepai.R
 import com.feriusjosewil.resepai.model.Recipe
 
-class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerView.Adapter<ListRecipeAdapter.ListViewHolder>() {
+class ListRecipeAdapter : RecyclerView.Adapter<ListRecipeAdapter.ListViewHolder>() {
+
+    private val itemList = ArrayList<Recipe>()
+
     private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setItemList(item: ArrayList<Recipe>) {
+        itemList.clear()
+        itemList.addAll(item)
+        notifyDataSetChanged()
+    }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -26,21 +36,21 @@ class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerVie
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(listRecipe[position].image)
+            .load(itemList[position].image)
             .apply(RequestOptions().override(350, 550))
             .into(holder.imgPhoto)
 
-        holder.tvTitle.text = listRecipe[position].title
-        holder.tvCategory.text = listRecipe[position].category
-        holder.tvLikes.text = listRecipe[position].likes.toString()
-        holder.tvPrice.text = "Rp.${listRecipe[position].price}"
+        holder.tvTitle.text = itemList[position].title
+        holder.tvCategory.text = itemList[position].category
+        holder.tvLikes.text = itemList[position].likes.toString()
+        holder.tvPrice.text = "Rp.${itemList[position].price}"
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listRecipe[holder.absoluteAdapterPosition])
+            onItemClickCallback.onItemClicked(itemList[holder.absoluteAdapterPosition])
         }
     }
 
     override fun getItemCount(): Int {
-        return listRecipe.size
+        return itemList.size
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -49,7 +59,6 @@ class ListRecipeAdapter(private val listRecipe: ArrayList<Recipe>) : RecyclerVie
         var tvCategory: TextView = itemView.findViewById(R.id.tv_item_category)
         var tvLikes: TextView = itemView.findViewById(R.id.tv_item_likes)
         var tvPrice: TextView = itemView.findViewById(R.id.tv_item_price)
-        var btnFavorite: ImageButton = itemView.findViewById(R.id.btn_item_favorite)
 
     }
 
