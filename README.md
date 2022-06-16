@@ -14,17 +14,115 @@ What are the problems that made us make this application?
 ## Apps Features
 
 App features :
-1. Register user.
-2. Login user.
-3. Profile info.
-4. History info.
-5. Cart menu.
+1. Register user
+2. Login user
+3. Profile info
+4. Recipe info
+5. History info
+6. Cart menu
 
 ## Overview
+|<img src=assets_readme/image_main_menu.jpeg align="center" height="400" width="200" ></a> |<img src=assets_readme/image_recipe_menu.jpeg  align="center" height="400" width="200" ></a>|<img src=assets_readme/image_cart_menu.jpeg  align="center" height="400" width="200" ></a>|
+|:-----------:|:--------:|:--------:|
+| HomePage | RecipeMenu | CartMenu |
 
+## Team ID
+> C22-PX440
+
+## Documentation
+### Android
+1.  Clone this github repository: [Resep-AI Mobile Developer](https://github.com/mutiawsr/resep-ai/tree/main/MD)
+2.  Open the project using Android Studio 
+3.  Make sure you have a device that is connected to android studio or you can also use an android emulator on your PC.
+4.  Click the Run 'app' button or press Shift + F10 on your keyboard.
+5.  Wait until the build and install process is complete. You can use the application.
+
+### Cloud Computing
+1. In Cloud Shell clone this repository: [Resep-AI Cloud Computing](https://github.com/mutiawsr/resep-ai/tree/main/resepaibackend)
+2. cd resepaibackend
+3. npm install
+4. change .env.sample to .env
+5. ./deploy.sh
+
+### Machine Learning
+1.  Clone this github repository : [Resep-AI Machine Learning](https://github.com/mutiawsr/resep-ai/tree/main/ML)  
+2.  Open with google colaboratory or Jupyter Notebook.
+3.  Install and import all packages.
+
+## Team Member
+<table>
+    <tr>
+        <td colspan=5 align="center">Project resep.ai</td>
+    </tr>
+    <tr>
+        <td>No.</td>
+        <td>Name</td>
+        <td>Bangkit ID</td>
+	<td>Learning Path</td>
+	<td>University</td>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>Mutia Wulansari</td>
+        <td>M2008F0816</td>
+	<td>Machine Learning</td> 
+	<td>Universitas Gadjah Mada</td> 
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>Sodo Lanang Bj. Katio</td>
+        <td>M2281G2427</td>
+	<td>Machine Learning</td> 
+	<td>Universitas Negeri Medan</td> 
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>Muhamad Rendi</td>
+        <td>M2327F2850</td>
+	<td>Machine Learning</td> 
+	<td>Universitas Teknologi Yogyakarta</td> 
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>Awwala Nisa Kamila</td>
+        <td>M2002F0120</td>
+	<td>Machine Learning</td> 
+	<td>Institut Teknologi Bandung</td> 
+    </tr>
+    <tr>
+        <td>5.</td>
+        <td>Ferius Josewil</td>
+        <td>A2172G1704</td>
+	<td>Mobile Development</td>
+	<td>Universitas Mikroskil</td> 
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>Ahmad Nur Saifullah</td>
+        <td>C2009F0938</td>
+	<td>Cloud Computing</td>
+	<td>Universitas Gunadarma</td> 
+    </tr>
+    <tr>
+        <td>7.</td>
+        <td>Jimson Marloanto</td>
+        <td>C2364J2911</td>
+	<td>Cloud Computing</td>
+	<td>Universitas Atma Jaya Makassar</td> 
+    </tr>
+</table>
+
+
+## Dataset
+> [Resep-AI Dataset](https://drive.google.com/file/d/1PPhcIdtS0W69bR6XRrLrKebUrZlWnFT8/view?usp=sharing)
+
+|<img src=assets_readme/image_data_cake.jpeg align="center" height="200" width="200" ></a> |<img src=assets_readme/image_data_pasta.jpeg  align="center" height="200" width="200" ></a>|<img src=assets_readme/image_data_pizza.jpeg  align="center" height="200" width="200" ></a>|<img src=assets_readme/image_data_salad.jpeg  align="center" height="200" width="200" ></a>|
+|:-----------:|:--------:|:--------:|:--------:|
+| Cake | Pasta | Pizza | Salad |
 
 ## Google Colab
 > [Resep-AI Notebook](https://colab.research.google.com/drive/1jEug6xCwtNVDyaqfLSJamrPCkobd3K3_?usp=sharing)
+
 
 Importing Module
 ---
@@ -293,92 +391,9 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 ```
+<img src=assets_readme/image_model_acc.png align="center" height="300" width="500" ></a> |<img src=assets_readme/image_model_loss.png  align="center" height="300" width="500" ></a>|
+|:-----------:|:--------:|
+| Model Accuracy | Model Loss |
 
-## Dataset
-> [Resep-AI Dataset](https://drive.google.com/file/d/1PPhcIdtS0W69bR6XRrLrKebUrZlWnFT8/view?usp=sharing)
-
-## Team ID
-> C22-PX440
-
-## Documentation
-### Android
-1.  Clone this github repository: [Resep-AI Mobile Developer](https://github.com/mutiawsr/resep-ai/tree/main/MD)
-2.  Open the project using Android Studio 
-3.  Make sure you have a device that is connected to android studio or you can also use an android emulator on your PC.
-4.  Click the Run 'app' button or press Shift + F10 on your keyboard.
-5.  Wait until the build and install process is complete. You can use the application.
-
-### Cloud Computing
-1. In Cloud Shell clone this repository: [Resep-AI Cloud Computing](https://github.com/mutiawsr/resep-ai/tree/main/resepaibackend)
-2. cd resepaibackend
-3. npm install
-4. change .env.sample to .env
-5. ./deploy.sh
-
-### Machine Learning
-1.  Clone this github repository : [Resep-AI Machine Learning](https://github.com/mutiawsr/resep-ai/tree/main/ML)  
-2.  Open with google colaboratory or Jupyter Notebook.
-3.  Install and import all packages.
-
-## Team Member
-<table>
-    <tr>
-        <td colspan=5 align="center">Project resep.ai</td>
-    </tr>
-    <tr>
-        <td>No.</td>
-        <td>Name</td>
-        <td>Bangkit ID</td>
-	<td>Learning Path</td>
-	<td>University</td>
-    </tr>
-    <tr>
-        <td>1.</td>
-        <td>Mutia Wulansari</td>
-        <td>M2008F0816</td>
-	<td>Machine Learning</td> 
-	<td>Universitas Gadjah Mada</td> 
-    </tr>
-    <tr>
-        <td>2.</td>
-        <td>Sodo Lanang Bj. Katio</td>
-        <td>M2281G2427</td>
-	<td>Machine Learning</td> 
-	<td>Universitas Negeri Medan</td> 
-    </tr>
-    <tr>
-        <td>3.</td>
-        <td>Muhamad Rendi</td>
-        <td>M2327F2850</td>
-	<td>Machine Learning</td> 
-	<td>Universitas Teknologi Yogyakarta</td> 
-    </tr>
-    <tr>
-        <td>4.</td>
-        <td>Awwala Nisa Kamila</td>
-        <td>M2002F0120</td>
-	<td>Machine Learning</td> 
-	<td>Institut Teknologi Bandung</td> 
-    </tr>
-    <tr>
-        <td>5.</td>
-        <td>Ferius Josewil</td>
-        <td>A2172G1704</td>
-	<td>Mobile Development</td>
-	<td>Universitas Mikroskil</td> 
-    </tr>
-    <tr>
-        <td>6.</td>
-        <td>Ahmad Nur Saifullah</td>
-        <td>C2009F0938</td>
-	<td>Cloud Computing</td>
-	<td>Universitas Gunadarma</td> 
-    </tr>
-    <tr>
-        <td>7.</td>
-        <td>Jimson Marloanto</td>
-        <td>C2364J2911</td>
-	<td>Cloud Computing</td>
-	<td>Universitas Atma Jaya Makassar</td> 
-    </tr>
-</table>
+## Cloud Computing Architecture
+<img src=assets_readme/image_cc_architecture.jpeg align="center" height="250" width="700" ></a>
